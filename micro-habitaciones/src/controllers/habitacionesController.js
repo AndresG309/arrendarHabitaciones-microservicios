@@ -1,4 +1,4 @@
-import HabitacionesModel from '../models/habitacionesModel'
+import HabitacionesModel from '../models/habitacionesModel.js'
 
 export async function getAllHabitacionesDisponibles(req, res) {
   try {

@@ -1,8 +1,8 @@
 import express from 'express'
 import cors from 'cors'
 import morgan from 'morgan'
-import { checkValidToken } from './middlewares/checkValidToken'
-import habitacionesRouter from './routes/habitacionesRouter'
+import { checkValidToken } from './middlewares/index.js'
+import habitacionesRouter from './routes/habitacionesRouter.js'
 
 const app = express()
 

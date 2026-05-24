@@ -1,4 +1,4 @@
-export { checkIfAdmin } from './checkIfAdmin'
-export { checkIfOwner } from './checkIfOwner'
-export { checkValidToken } from './checkValidToken'
-export { checkIfTenant } from './checkIfTenant'
+export { checkIfAdmin } from './checkIfAdmin.js'
+export { checkIfOwner } from './checkIfOwner.js'
+export { checkValidToken } from './checkValidToken.js'
+export { checkIfTenant } from './checkIfTenant.js'

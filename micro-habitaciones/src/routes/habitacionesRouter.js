@@ -4,8 +4,8 @@ import {
   rentHabitacion,
   getMisHabitaciones,
   createHabitacion,
-} from '../controllers/habitacionesController'
-import { checkIfOwner, checkIfTenant } from '../middlewares'
+} from '../controllers/habitacionesController.js'
+import { checkIfOwner, checkIfTenant } from '../middlewares/index.js'
 
 const router = Router()
 
