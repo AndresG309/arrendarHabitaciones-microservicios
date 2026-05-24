@@ -1,23 +1,19 @@
 import { Router } from 'express'
 import {
   getAllHabitacionesDisponibles,
-  createHabitacion,
   rentHabitacion,
+  getMisHabitaciones,
+  createHabitacion,
 } from '../controllers/habitacionesController'
-import {
-  checkIfAdmin,
-  checkIfOwner,
-  checkIfTenant,
-  checkValidToken,
-} from '../middlewares'
+import { checkIfOwner, checkIfTenant } from '../middlewares'
 
 const router = Router()
 
-// Rutas solo para arrendatarios
-router.get('/', checkIfTenant, getAllHabitacionesDisponibles)
-router.put('/:id', checkIfTenant, rentHabitacion)
-
 // Rutas solo para propietario
 router.post('/', checkIfOwner, createHabitacion)
+router.get('/mias', checkIfOwner, getMisHabitaciones)
+// Rutas solo para arrendatarios
+router.get('/', checkIfTenant, getAllHabitacionesDisponibles)
+router.patch('/:id/rentar', checkIfTenant, rentHabitacion)
 
 export default router
