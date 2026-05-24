@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS micro_usuarios;
-USE micro_usuarios;
+CREATE DATABASE IF NOT EXISTS microservicio_usuarios;
+USE microservicio_usuarios;
 CREATE TABLE IF NOT EXISTS usuarios (
     id VARCHAR(36) PRIMARY KEY, 
     fullname VARCHAR(100) NOT NULL ,
