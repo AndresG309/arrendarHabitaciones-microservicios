@@ -1,0 +1,48 @@
+### Variables
+@baseUrl = http://localhost:3002
+@token = TU_TOKEN_AQUI
+@habitacionId = REEMPLAZAR_ID
+
+##################################################
+### Health check
+GET {{baseUrl}}/health
+
+##################################################
+### Obtener habitaciones disponibles (arrendatario)
+GET {{baseUrl}}/habitaciones
+Authorization: Bearer {{token}}
+
+##################################################
+### Arrendar habitación (arrendatario)
+PATCH {{baseUrl}}/habitaciones/{{habitacionId}}/rentar
+Authorization: Bearer {{token}}
+
+##################################################
+### Crear habitación (propietario)
+POST {{baseUrl}}/habitaciones
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "ciudad": "Cali",
+  "descripcion": "Habitación amplia con baño privado",
+  "costo": 500000
+}
+
+##################################################
+### Crear habitación especificando disponibilidad (opcional)
+POST {{baseUrl}}/habitaciones
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "ciudad": "Medellín",
+  "descripcion": "Habitación cerca al metro",
+  "costo": 650000,
+  "estaDisponible": true
+}
+
+##################################################
+### Obtener mis habitaciones (propietario)
+GET {{baseUrl}}/habitaciones/mias
+Authorization: Bearer {{token}}
