@@ -2,10 +2,10 @@ const USERS_API = 'http://localhost:3001/usuarios/validar-token'
 
 async function checkValidToken(req, res, next) {
   try {
-    const { token } = req.body
+    const authHeader = req.headers.authorization
 
     // Revisar si se recibió el token
-    if (!token) {
+    if (!authHeader) {
       res.status(404).json({
         success: false,
         message: 'No se ha recibido un token de usuario',
@@ -13,15 +13,20 @@ async function checkValidToken(req, res, next) {
       return
     }
 
-    // Hacer consulta al microservicio de usuarios
+    // Formato: "Bearer token"
+    const token = authHeader.split(' ')[1]
+
     const response = await fetch(USERS_API, {
-      body: {
-        token,
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${token}`,
       },
     })
 
+    const data = await response.json()
+
     // En caso que la respuesta fue erronea, terminar proceso
-    if (!response.success) {
+    if (!data.success) {
       res.status(404).json({
         success: false,
         message: 'El token es inválido',
@@ -30,7 +35,7 @@ async function checkValidToken(req, res, next) {
     }
 
     // Añadir los datos del usuario a la petición para ser usados por el controller
-    req.user = response.data
+    req.user = data.data
 
     // Mandar la petición al siguiente paso
     next()
