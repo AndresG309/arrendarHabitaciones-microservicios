@@ -2,8 +2,8 @@ async function checkIfAdmin(req, res, next) {
   try {
     const { user } = req
 
-    if (user.rol !== 'admin') {
-      res.status(404).json({
+    if (user.rol !== 'administrador') {
+      res.status(401).json({
         success: false,
         message: 'El usuario no tiene permisos para realizar esta acción',
       })

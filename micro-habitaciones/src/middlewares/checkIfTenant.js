@@ -1,8 +1,8 @@
-async function checkIfOwner(req, res, next) {
+async function checkIfTenant(req, res, next) {
   try {
     const { user } = req
 
-    if (user.rol !== 'propietario') {
+    if (user.rol !== 'arrendatario') {
       res.status(401).json({
         success: false,
         message: 'El usuario no tiene permisos para realizar esta acción',
@@ -21,4 +21,4 @@ async function checkIfOwner(req, res, next) {
   }
 }
 
-export { checkIfOwner }
+export { checkIfTenant }
