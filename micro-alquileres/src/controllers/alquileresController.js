@@ -5,7 +5,7 @@ export async function createAlquiler(req, res) {
   try {
     const { habitacionId, nombrePropietario, nombreArrendatario } = req.body
 
-    if (!habitacionId || !propietarioId || !arrendatarioId) {
+    if (!habitacionId || !nombrePropietario || !nombreArrendatario) {
       res.status(400).json({
         success: false,
         message: 'No se han especificado los campos requeridos',
@@ -51,9 +51,9 @@ export async function getAllAlquileres(req, res) {
 
 export async function getMisAlquileres(req, res) {
   try {
-    const { fullName } = req.user
+    const { fullname } = req.user
 
-    const alquileres = await AlquileresModel.getAlquileresByOwnerName(fullName)
+    const alquileres = await AlquileresModel.getAlquileresByOwnerName(fullname)
 
     res.status(200).json({
       success: true,

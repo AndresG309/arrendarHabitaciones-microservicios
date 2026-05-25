@@ -1,11 +1,11 @@
 ### Variables
 @baseUrl = http://localhost:3002
-@token = TU_TOKEN_AQUI
-@habitacionId = REEMPLAZAR_ID
-
-##################################################
-### Health check
-GET {{baseUrl}}/health
+@token = REEMPLAZAR_CON_TOKEN
+@habitacionId1 = a1b2c3d4-e5f6-7890-abcd-1234567890ef
+@habitacionId2 = b2c3d4e5-f6a7-8901-bcde-2345678901fa
+@habitacionId3 = c3d4e5f6-a7b8-9012-cdef-3456789012ab
+@propietarioId = 11111111-2222-3333-4444-555555555555
+@arrendatarioId = bbbbbbbb-cccc-dddd-eeee-ffffffffffff
 
 ##################################################
 ### Obtener habitaciones disponibles (arrendatario)
@@ -14,7 +14,17 @@ Authorization: Bearer {{token}}
 
 ##################################################
 ### Arrendar habitación (arrendatario)
-PATCH {{baseUrl}}/habitaciones/{{habitacionId}}/rentar
+PATCH {{baseUrl}}/habitaciones/{{habitacionId3}}/rentar
+Authorization: Bearer {{token}}
+
+##################################################
+### Arrendar habitación Bogotá
+PATCH {{baseUrl}}/habitaciones/{{habitacionId1}}/rentar
+Authorization: Bearer {{token}}
+
+##################################################
+### Arrendar habitación Medellín
+PATCH {{baseUrl}}/habitaciones/{{habitacionId2}}/rentar
 Authorization: Bearer {{token}}
 
 ##################################################
@@ -24,21 +34,35 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "ciudad": "Cali",
-  "descripcion": "Habitación amplia con baño privado",
-  "costo": 500000
+  "ciudad": "Bogotá",
+  "descripcion": "Habitación espaciosa con vista a la ciudad",
+  "costo": 900000,
+  "estaDisponible": true
 }
 
 ##################################################
-### Crear habitación especificando disponibilidad (opcional)
+### Crear habitación Medellín
 POST {{baseUrl}}/habitaciones
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
   "ciudad": "Medellín",
-  "descripcion": "Habitación cerca al metro",
-  "costo": 650000,
+  "descripcion": "Apartamento amoblado cerca al parque Arvi",
+  "costo": 750000,
+  "estaDisponible": true
+}
+
+##################################################
+### Crear habitación Cali
+POST {{baseUrl}}/habitaciones
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "ciudad": "Cali",
+  "descripcion": "Cuarto compartido con baño privado",
+  "costo": 600000,
   "estaDisponible": true
 }
 

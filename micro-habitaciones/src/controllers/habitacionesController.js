@@ -38,7 +38,7 @@ export async function rentHabitacion(req, res) {
     const alquilerId = await createRegistroDeAlquiler({
       habitacionId: id,
       nombrePropietario,
-      nombreArrendatario: req.user.fullName,
+      nombreArrendatario: req.user.fullname,
     })
 
     res.status(200).json({

@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS microservicio-alquileres;
-USE microservicio-alquileres;
+CREATE DATABASE IF NOT EXISTS microservicio_alquileres;
+USE microservicio_alquileres;
 
 CREATE TABLE IF NOT EXISTS alquileres (
     id VARCHAR(36) PRIMARY KEY,
@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS alquileres (
     nombrePropietario VARCHAR(255) NOT NULL,
     nombreArrendatario VARCHAR(255) NOT NULL,
     fechaInicio DATE NOT NULL
-  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  );
 
 -- El ID de habitación incluido aquí corresponde a la habitación ocupada creada en microHabitaciones
 INSERT IGNORE INTO alquileres

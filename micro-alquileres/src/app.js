@@ -15,7 +15,7 @@ app.use(cors())
 app.use(express.json())
 
 // Rutas para usuarios
-app.use('/', checkValidToken, alquileresRouter)
+app.use('/alquileres', checkValidToken, alquileresRouter)
 // Rutas para microservicios
 app.use('/api', checkInternalService, alquileresApiRouter)
 

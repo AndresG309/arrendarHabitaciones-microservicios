@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS microservicio-habitaciones;
-USE microservicio-habitaciones;
+CREATE DATABASE IF NOT EXISTS microservicio_habitaciones;
+USE microservicio_habitaciones;
 
 CREATE TABLE IF NOT EXISTS habitaciones(
   id VARCHAR(36) PRIMARY KEY,
@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS habitaciones(
   propietario VARCHAR(36) NOT NULL,
   costo DECIMAL(10,2) NOT NULL,
   estaDisponible BOOLEAN NOT NULL DEFAULT TRUE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+);
 
 INSERT IGNORE INTO habitaciones (id, ciudad, descripcion, propietario, costo, estaDisponible)
 VALUES (

@@ -1,0 +1,97 @@
+### Variables
+@baseUrl = http://localhost:3001
+@token = REEMPLAZAR_CON_TOKEN
+@userId = 00000000-0000-0000-0000-000000000000
+@adminUsername = admin
+@adminPassword = admin123secure
+
+##################################################
+### LOGIN - Obtener token
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "username": "{{adminUsername}}",
+  "password": "{{adminPassword}}"
+}
+
+##################################################
+### LOGIN - Admin
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin123secure"
+}
+
+##################################################
+### LOGIN - Propietario Bogotá
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "username": "propietario_bogota",
+  "password": "password123"
+}
+
+##################################################
+### LOGIN - Ana Torres (Arrendatario)
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "username": "ana_torres",
+  "password": "password123"
+}
+
+##################################################
+### Obtener todos los usuarios (Admin)
+GET {{baseUrl}}/
+Authorization: Bearer {{token}}
+
+##################################################
+### Obtener usuario por ID
+GET {{baseUrl}}/{{userId}}
+Authorization: Bearer {{token}}
+
+##################################################
+### Obtener usuario específico - Propietario Bogotá
+GET {{baseUrl}}/11111111-2222-3333-4444-555555555555
+Authorization: Bearer {{token}}
+
+##################################################
+### Crear nuevo usuario (Admin)
+POST {{baseUrl}}/
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "fullname": "Nuevo Usuario Prueba",
+  "username": "usuario_prueba",
+  "password": "password123",
+  "rol": "arrendatario"
+}
+
+##################################################
+### Actualizar usuario (Admin)
+PUT {{baseUrl}}/{{userId}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "fullname": "Admin Actualizado",
+  "username": "admin",
+  "password": "newpassword123",
+  "rol": "administrador"
+}
+
+##################################################
+### Eliminar usuario (Admin)
+DELETE {{baseUrl}}/{{userId}}
+Authorization: Bearer {{token}}
+
+##################################################
+### Verificar token (para otros microservicios)
+GET {{baseUrl}}/api/auth/verify-token
+Authorization: Bearer {{token}}

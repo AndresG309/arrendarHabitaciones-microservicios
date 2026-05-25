@@ -1,0 +1,48 @@
+### Variables
+@baseUrl = http://localhost:3003
+@token = REEMPLAZAR_CON_TOKEN
+@habitacionId = c3d4e5f6-a7b8-9012-cdef-3456789012ab
+@alquilerId = a1b2c3d4-e5f6-7890-abcd-123456789001
+
+##################################################
+### Obtener todos los alquileres
+GET {{baseUrl}}/api
+Authorization: Bearer {{token}}
+
+##################################################
+### Obtener alquileres del propietario
+GET {{baseUrl}}/api/mios
+Authorization: Bearer {{token}}
+
+##################################################
+### Crear alquiler (Llamada interna desde micro-habitaciones)
+POST {{baseUrl}}/api
+Content-Type: application/json
+
+{
+  "habitacionId": "{{habitacionId}}",
+  "nombrePropietario": "Carlos Ramírez",
+  "nombreArrendatario": "Ana Torres"
+}
+
+##################################################
+### Crear alquiler - Habitación Bogotá
+POST {{baseUrl}}/api
+Content-Type: application/json
+
+{
+  "habitacionId": "a1b2c3d4-e5f6-7890-abcd-1234567890ef",
+  "nombrePropietario": "Propietario Bogotá",
+  "nombreArrendatario": "Arrendatario Test"
+}
+
+##################################################
+### Crear alquiler - Habitación Medellín
+POST {{baseUrl}}/api
+Content-Type: application/json
+
+{
+  "habitacionId": "b2c3d4e5-f6a7-8901-bcde-2345678901fa",
+  "nombrePropietario": "Propietario Medellín",
+  "nombreArrendatario": "Nuevo Arrendatario"
+}

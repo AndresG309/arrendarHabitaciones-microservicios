@@ -1,5 +1,7 @@
 import HabitacionesModel from '../models/habitacionesModel.js'
 
+const USERS_API = 'http://localhost:3001/api'
+
 async function getNombrePropietario(idHabitacion) {
   try {
     const idPropietario =
@@ -12,7 +14,7 @@ async function getNombrePropietario(idHabitacion) {
     }
 
     const response = await fetch(
-      `http://localhost:3001/usuarios/${idPropietario}`,
+      `${USERS_API}/${idPropietario}`,
       {
         method: 'GET',
       },
@@ -24,7 +26,7 @@ async function getNombrePropietario(idHabitacion) {
       throw new Error('No se ha podido obtener la información del propietario')
     }
 
-    return data.data.fullName
+    return data.data.fullname
   } catch (error) {
     throw new Error(
       error instanceof Error ? error.message : 'Error al obtener usuario',

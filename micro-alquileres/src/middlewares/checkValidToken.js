@@ -1,4 +1,4 @@
-const USERS_API = 'http://localhost:3001/usuarios/validar-token'
+const USERS_API = 'http://localhost:3001/api/auth/verify-token'
 
 async function checkValidToken(req, res, next) {
   try {
