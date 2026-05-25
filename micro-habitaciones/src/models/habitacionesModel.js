@@ -18,6 +18,19 @@ class HabitacionesModel {
     return habitaciones
   }
 
+  async getOwnerOfHabitacion(habitacionId) {
+    const [rows] = await pool.query(
+      'SELECT propietario FROM habitaciones WHERE id = ?',
+      [habitacionId],
+    )
+
+    if (rows.length === 0) {
+      return null
+    }
+
+    return rows[0].propietario
+  }
+
   async createHabitacion(habitacion) {
     const habitacionId = uuidv4()
 

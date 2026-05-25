@@ -1,3 +1,5 @@
+import { createRegistroDeAlquiler } from '../helpers/createRegistroDeAlquiler.js'
+import { getNombrePropietario } from '../helpers/getNombrePropietario.js'
 import HabitacionesModel from '../models/habitacionesModel.js'
 
 export async function getAllHabitacionesDisponibles(req, res) {
@@ -31,12 +33,18 @@ export async function rentHabitacion(req, res) {
       return
     }
 
-    // AQUÍ MANDAR A CREAR EL REGISTRO EN EL MICROSERVICIO DE ALQUILERES
-    // "Se deberá almacenar un registro del alquiler en el cual se indique el nombre del propietario, el nombre del arrendatario y la fecha de inicio del alquiler."
+    // MANDAR A CREAR EL REGISTRO EN EL MICROSERVICIO DE ALQUILERES
+    const nombrePropietario = await getNombrePropietario(id)
+    const alquilerId = await createRegistroDeAlquiler({
+      habitacionId: id,
+      nombrePropietario,
+      nombreArrendatario: req.user.fullName,
+    })
 
     res.status(200).json({
       success: true,
       message: 'La habitación ha sido arrendada con éxito',
+      data: { alquilerId },
     })
   } catch (error) {
     res.status(500).json({
