@@ -1,4 +1,4 @@
-async function checkIfAdmin(req, res, next) {
+function checkIfAdmin(req, res, next) {
   try {
     const { user } = req
 

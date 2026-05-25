@@ -1,4 +1,4 @@
-async function checkIfOwner(req, res, next) {
+function checkIfOwner(req, res, next) {
   try {
     const { user } = req
 
