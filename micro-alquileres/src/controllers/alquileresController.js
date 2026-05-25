@@ -12,18 +12,16 @@ export async function createAlquiler(req, res) {
       })
     }
 
-    const data = {
+    const alquilerId = await AlquileresModel.createAlquiler({
       habitacionId,
       nombrePropietario,
-      nombreArrendatario
-    }
-
-    const alquiler = await AlquileresModel.createAlquiler(data)
+      nombreArrendatario,
+    })
 
     res.status(201).json({
       success: true,
       message: 'El alquiler ha sido creado correctamente',
-      alquiler,
+      data: { alquilerId },
     })
   } catch (error) {
     res.status(500).json({
