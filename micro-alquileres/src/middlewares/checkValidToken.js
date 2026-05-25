@@ -1,4 +1,4 @@
-const USERS_API = 'http://localhost:3001/api/auth/verify-token'
+const USERS_API = 'http://www.parcial3.com:3001/api/auth/verify-token'
 
 async function checkValidToken(req, res, next) {
   try {

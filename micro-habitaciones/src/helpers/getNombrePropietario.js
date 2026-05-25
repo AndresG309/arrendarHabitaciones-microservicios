@@ -1,6 +1,6 @@
 import HabitacionesModel from '../models/habitacionesModel.js'
 
-const USERS_API = 'http://localhost:3001/api'
+const USERS_API = 'http://www.parcial3.com:3001/api'
 
 async function getNombrePropietario(idHabitacion) {
   try {

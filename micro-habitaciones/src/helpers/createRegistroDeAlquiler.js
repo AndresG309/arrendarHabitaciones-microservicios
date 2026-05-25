@@ -1,4 +1,4 @@
-const ALQUILERES_API = 'http://localhost:3003/api/'
+const ALQUILERES_API = 'http://www.parcial3.com:3003/api/'
 
 async function createRegistroDeAlquiler(datos) {
   try {
