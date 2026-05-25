@@ -1,22 +1,24 @@
 ### Variables
-@baseUrl = http://localhost:3003
+@baseUrl = http://localhost:3003/alquileres
 @token = REEMPLAZAR_CON_TOKEN
 @habitacionId = c3d4e5f6-a7b8-9012-cdef-3456789012ab
 @alquilerId = a1b2c3d4-e5f6-7890-abcd-123456789001
 
 ##################################################
-### Obtener todos los alquileres
-GET {{baseUrl}}/api
+### Obtener todos los alquileres (Admin)
+GET {{baseUrl}}
 Authorization: Bearer {{token}}
 
 ##################################################
-### Obtener alquileres del propietario
-GET {{baseUrl}}/api/mios
+### Obtener alquileres del propietario (Propietario)
+GET {{baseUrl}}/misAlquileres
 Authorization: Bearer {{token}}
 
+########## LLAMADA INTERNA QUE REALIZA MICRO HABITACIONES PARA CREAR EL REGISTRO DE ALQUILER
+
 ##################################################
-### Crear alquiler (Llamada interna desde micro-habitaciones)
-POST {{baseUrl}}/api
+### Crear alquiler
+POST http://localhost:3003/api
 Content-Type: application/json
 
 {
