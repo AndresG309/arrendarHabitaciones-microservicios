@@ -1,6 +1,6 @@
 ### Variables
-@baseUrl = http://localhost:3001
-@token = REEMPLAZAR_CON_TOKEN
+@baseUrl = http://localhost:3001/usuarios
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMCIsInVzZXJuYWYWRtaW4iLCJyb2wiOiJhZG1pbmlzdHJhZG9yIiwiaWF0IjoxNzc5Njg2MzQwLCJleHAiOjE3Nzk3NzI3NDB9.dAH8MBIw3oHNiu6Fyj0l88RzgzJEf1l2Ymwy2IQGLeU
 @userId = 00000000-0000-0000-0000-000000000000
 @adminUsername = admin
 @adminPassword = admin123secure
@@ -93,5 +93,10 @@ Authorization: Bearer {{token}}
 
 ##################################################
 ### Verificar token (para otros microservicios)
-GET {{baseUrl}}/api/auth/verify-token
+GET http://localhost:3001/api/auth/verify-token
 Authorization: Bearer {{token}}
+
+##################################################
+### obtener info de usuario (para otros microservicios)
+GET http://localhost:3001/api/{{userId}}
+
