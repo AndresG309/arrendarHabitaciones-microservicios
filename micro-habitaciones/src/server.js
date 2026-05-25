@@ -21,5 +21,5 @@ console.log('Variables de entorno cargadas:', variablesEntorno)
 const PORT = process.env.SERVICE_PORT || 3002
 
 app.listen(PORT, () => {
-  console.log(`Microservicio de usuarios escuchando en puerto ${PORT}`)
+  console.log(`Microservicio de habitaciones escuchando en puerto ${PORT}`)
 })
