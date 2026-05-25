@@ -21,6 +21,23 @@ class AlquileresModel {
 
     return alquilerId
   }
+
+  async getAllAlquileres() {
+    const [alquileres] = await pool.query('SELECT * FROM alquileres')
+
+    return alquileres
+  }
+
+  async getAlquileresByOwnerName(nombrePropietario) {
+    const [alquileres] = await pool.query(
+      `SELECT *
+       FROM alquileres
+       WHERE nombrePropietario = ?`,
+      [nombrePropietario],
+    )
+
+    return alquileres
+  }
 }
 
 export default new AlquileresModel()
