@@ -3,7 +3,7 @@ import AlquileresModel from '../models/alquileresModel.js'
 // Función de uso exclusivo para otro microservicio
 export async function createAlquiler(req, res) {
   try {
-    const { habitacionId, propietarioId, arrendatarioId } = req.body
+    const { habitacionId, nombrePropietario, nombreArrendatario } = req.body
 
     if (!habitacionId || !propietarioId || !arrendatarioId) {
       res.status(400).json({
@@ -15,7 +15,7 @@ export async function createAlquiler(req, res) {
     const data = {
       habitacionId,
       nombrePropietario,
-      nombreArrendatario,
+      nombreArrendatario
     }
 
     const alquiler = await AlquileresModel.createAlquiler(data)

@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS alquileres (
     fechaInicio DATE NOT NULL
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+-- El ID de habitación incluido aquí corresponde a la habitación ocupada creada en microHabitaciones
 INSERT IGNORE INTO alquileres
 (id, habitacionId, nombrePropietario, nombreArrendatario, fechaInicio)
 VALUES
